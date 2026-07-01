@@ -1,0 +1,108 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Formance
+providerId: formance
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Financial Infrastructure
+- Ledger
+- Payments
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Formance spend. Formance can be consumed as free, self-hosted
+  open-source components (where cost is your own infrastructure and operations)
+  or as managed Formance Cloud (quoted by sales on a usage / volume basis, with
+  Enterprise agreements). Because Formance itself moves money, cost management
+  spans two layers: the platform cost of running Formance, and the downstream
+  processing fees charged by the payment connectors it orchestrates.
+notes: >-
+  Public unit rates for Formance Cloud were not published at authoring time;
+  reconcile actual meters and rates with Formance sales. Connector-side fees
+  are billed by the underlying processors, not by Formance.
+sources:
+- https://www.formance.com/pricing
+- https://docs.formance.com
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Formance
+serviceCategory: Financial Infrastructure
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Formance Cloud
+  ServiceCategory: Financial Infrastructure
+  ProviderName: Formance
+  PublisherName: Formance
+  InvoiceIssuerName: Formance
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: ledger_transactions
+  description: Double-entry transactions posted to the ledger, a primary volume driver on Cloud.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - stack
+  - ledger
+- name: payments_processed
+  description: Payments ingested and orchestrated through the Payments module.
+  unit: payments
+  aggregation: sum
+  dimensions:
+  - stack
+  - connector
+- name: workflow_runs
+  description: Flows orchestration workflow instances executed.
+  unit: instances
+  aggregation: sum
+  dimensions:
+  - stack
+  - workflow
+- name: connector_fees
+  description: >-
+    Downstream processing fees charged by underlying payment providers
+    (Stripe, Wise, Adyen, etc.); billed by those providers, tracked here for
+    total cost of money movement.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - connector
+  - asset
+- name: self_hosted_infrastructure
+  description: Compute, database, and storage cost of running open-source Formance yourself.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - environment
+principles:
+- name: Visibility
+  description: Track ledger transaction and payment volume per stack; separate Formance platform cost from downstream connector fees.
+- name: Allocation
+  description: Tag stacks / ledgers / workflows to teams and products; map connector fees to the flows that generate them.
+- name: Optimization
+  description: >-
+    Self-host open-source components where operations capacity exists; batch
+    and consolidate money movements to reduce connector fees; prune unused
+    connectors and idle stacks.
+- name: Accountability
+  description: Assign owners per stack and per connector; review money-movement volume and processing fees monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

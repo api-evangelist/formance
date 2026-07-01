@@ -1,0 +1,64 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Formance
+providerId: formance
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Financial Infrastructure
+- Ledger
+- Payments
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Formance does not publish fixed public per-endpoint rate limits. Self-hosted
+  open-source deployments are bounded by the resources you provision (database
+  throughput, ledger write contention, and connector-side limits at the
+  upstream payment processors). Formance Cloud applies platform protections and
+  fair-use limits per stack / organization that are governed by your plan and
+  may return HTTP 429 when exceeded. Specific numeric values are not reconciled
+  in this artifact.
+notes: >-
+  Confirm Cloud per-stack limits and any burst / concurrency ceilings with
+  Formance during onboarding; self-hosted throughput is a function of your own
+  Postgres and infrastructure sizing. Ledger transaction ordering also serializes
+  writes contending on the same accounts.
+sources:
+- https://docs.formance.com
+- https://www.formance.com/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Cloud API Requests
+  scope: organization
+  metric: requests
+  limit: see provider documentation
+  notes: Fair-use / plan-governed request limits per stack on Formance Cloud.
+- name: Ledger Write Throughput
+  scope: ledger
+  metric: transactions
+  limit: infrastructure-bound
+  notes: >-
+    Self-hosted ledger write throughput is bounded by your Postgres sizing;
+    transactions touching the same accounts serialize to preserve double-entry
+    consistency.
+- name: Connector Limits
+  scope: connector
+  metric: requests
+  limit: upstream-provider dependent
+  notes: >-
+    Payment connector operations are additionally subject to the rate limits
+    of the underlying processor (Stripe, Wise, Adyen, Mangopay, etc.).
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Idempotency
+  description: >-
+    Use references / idempotency keys on transaction and payment-initiation
+    creation so retries after throttling do not double-post.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

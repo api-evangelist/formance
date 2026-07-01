@@ -1,0 +1,77 @@
+aid: formance
+name: Formance
+review:
+  question: Does Formance expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Formance's event surface is delivered as
+    outbound HTTP webhooks (configured via the Webhooks module), not as a
+    client-consumable WebSocket or SSE stream from the API. Webhook delivery is
+    server-to-server HTTP POST with a rotating signing secret, which is outside
+    the WebSocket/SSE modeling scope.
+findings:
+  summary: |
+    Formance does not publish a documented public WebSocket API. Every module
+    of the Formance Platform - Ledger (v2), Payments (v1/v3), Orchestration /
+    Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - is
+    exposed as REST over HTTPS, served under per-module path prefixes (for
+    example /api/ledger, /api/payments, /api/orchestration) on a single
+    Formance Cloud stack host. Authentication is OAuth2 client-credentials:
+    clients POST to /api/auth/oauth/token for a Bearer access token. Real-time
+    delivery of platform events is handled by outbound HTTP webhooks, not by a
+    WebSocket (ws:// or wss://) or Server-Sent Events endpoint the client
+    subscribes to. No bidirectional or streaming socket surface is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{organization}.{environment}.formance.cloud
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP POST event delivery configured via the Webhooks module; signed with a rotating secret. Server-to-server, not a client subscription socket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented across the Ledger, Payments, Orchestration, Wallets, Reconciliation, Auth, Webhooks, or Search modules as of the review date.
+  endpointsConfirmedRest:
+    - POST   /api/auth/oauth/token
+    - GET    /api/ledger/v2
+    - POST   /api/ledger/v2/{ledger}
+    - POST   /api/ledger/v2/{ledger}/transactions
+    - GET    /api/ledger/v2/{ledger}/accounts
+    - GET    /api/ledger/v2/{ledger}/aggregate/balances
+    - GET    /api/payments/v1/payments
+    - POST   /api/payments/v1/transfer-initiations
+    - GET    /api/payments/v1/connectors
+    - GET    /api/orchestration/v2/workflows
+    - POST   /api/orchestration/v2/workflows/{flowId}/instances
+    - POST   /api/wallets/v1/wallets/{id}/debit
+    - POST   /api/reconciliation/v1/policies/{policyID}/reconciliation
+    - GET    /api/webhooks/configs
+    - POST   /api/search/
+sources:
+  - url: https://docs.formance.com
+    type: Documentation
+    note: Platform docs describe REST modules; no WebSocket transport mentioned.
+  - url: https://docs.formance.com/api
+    type: APIReference
+    note: All documented operations are HTTPS REST secured with OAuth2 client credentials.
+  - url: https://github.com/formancehq
+    type: SourceCode
+    note: Open-source components and SDKs are generated from OpenAPI; SDKs expose REST clients only.
+  - url: https://docs.formance.com/webhooks
+    type: Documentation
+    note: Event delivery is outbound HTTP webhooks, not a client-subscribed WebSocket/SSE stream.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and the event surface is outbound
+    HTTP webhooks rather than a client-consumable WebSocket or SSE stream, so
+    no AsyncAPI document was authored. The apis.yml catalog entry models the
+    documented REST modules and their OpenAPI, Postman, and Open Collection
+    artifacts.

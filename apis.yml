@@ -1,0 +1,244 @@
+aid: formance
+url: https://raw.githubusercontent.com/api-evangelist/formance/refs/heads/main/apis.yml
+name: Formance
+kind: company
+description: Formance builds open-source financial infrastructure for money movement.
+  The platform pairs a programmable double-entry Ledger (with the Numscript DSL) with
+  a unified Payments connectivity layer and Flows orchestration, plus Wallets, Reconciliation,
+  Auth, and Webhooks. It is delivered as open-source components and as a managed multi-tenant
+  Formance Cloud, exposing REST APIs secured with OAuth2 client-credentials Bearer tokens.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial Infrastructure
+- Ledger
+- Double-Entry Accounting
+- Payments
+- Orchestration
+- Money Movement
+- Open Source
+- Fintech
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: formance:formance-ledger-api
+  name: Formance Ledger API
+  tags:
+  - Ledger
+  - Double-Entry Accounting
+  - Transactions
+  - Accounts
+  - Balances
+  - Numscript
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/ledger
+  baseURL: https://{organization}.{environment}.formance.cloud/api/ledger
+  properties:
+  - url: https://docs.formance.com/ledger
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: The programmable, open-source double-entry Ledger (v2). Create ledgers,
+    post immutable transactions with multi-posting sources and destinations, read
+    accounts, balances, aggregated balances and volumes, attach metadata, revert
+    transactions, and model complex money flows with the Numscript DSL. Supports bulk
+    requests and a full transaction/account log.
+- aid: formance:formance-payments-api
+  name: Formance Payments API
+  tags:
+  - Payments
+  - Connectors
+  - Bank Accounts
+  - Transfer Initiation
+  - Pools
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/payments
+  baseURL: https://{organization}.{environment}.formance.cloud/api/payments
+  properties:
+  - url: https://docs.formance.com/payments
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: Unified Payments connectivity layer. Install and configure connectors
+    to payment processors and banks (Stripe, Wise, Mangopay, Adyen, and more), ingest
+    payments and accounts, manage bank accounts, initiate and manage transfers /
+    payment initiations, and group accounts into pools with aggregated balances.
+    Available as v1 and the expanded v3 API surface.
+- aid: formance:formance-orchestration-api
+  name: Formance Orchestration API
+  tags:
+  - Orchestration
+  - Flows
+  - Workflows
+  - Triggers
+  - Money Movement
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/flows
+  baseURL: https://{organization}.{environment}.formance.cloud/api/orchestration
+  properties:
+  - url: https://docs.formance.com/flows
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: Flows orchestration engine (v2) for composing durable financial workflows
+    across the Ledger, Payments, and Wallets. Define and run workflows, inspect workflow
+    instances and their stage history, and wire event-driven triggers that launch
+    workflows in response to platform events.
+- aid: formance:formance-wallets-api
+  name: Formance Wallets API
+  tags:
+  - Wallets
+  - Balances
+  - Holds
+  - Credit
+  - Debit
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/wallets
+  baseURL: https://{organization}.{environment}.formance.cloud/api/wallets
+  properties:
+  - url: https://docs.formance.com/wallets
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: White-label Wallets service built on top of the Ledger. Create and
+    list wallets and named balances, credit and debit wallets, place and confirm
+    or void holds (authorization-then-capture), and read wallet summaries, balances,
+    and transactions.
+- aid: formance:formance-reconciliation-api
+  name: Formance Reconciliation API
+  tags:
+  - Reconciliation
+  - Policies
+  - Audit
+  - Assets Under Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/reconciliation
+  baseURL: https://{organization}.{environment}.formance.cloud/api/reconciliation
+  properties:
+  - url: https://docs.formance.com/reconciliation
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: Reconciliation toolkit for auditing assets under management. Define
+    reconciliation policies, run reconciliations that compare Ledger balances against
+    payments-side balances at a point in time, and list or retrieve reconciliation
+    results.
+- aid: formance:formance-auth-api
+  name: Formance Auth API
+  tags:
+  - Auth
+  - OAuth2
+  - Clients
+  - Identity
+  - OIDC
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/security
+  baseURL: https://{organization}.{environment}.formance.cloud/api/auth
+  properties:
+  - url: https://docs.formance.com/security
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: OAuth2 / OIDC authorization server for the platform. Issue client-credentials
+    access tokens, manage OAuth clients and their secrets, list users, and read the
+    OpenID Connect well-known configuration used to secure every other Formance API.
+- aid: formance:formance-webhooks-api
+  name: Formance Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Subscriptions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/webhooks
+  baseURL: https://{organization}.{environment}.formance.cloud/api/webhooks
+  properties:
+  - url: https://docs.formance.com/webhooks
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: Manage webhook subscriptions that deliver platform events (ledger,
+    payments, wallets, and orchestration) to your endpoints. Insert and list configs,
+    activate or deactivate them, rotate signing secrets, and send test events.
+- aid: formance:formance-search-api
+  name: Formance Search API
+  tags:
+  - Search
+  - Indexing
+  - Query
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.formance.com/search
+  baseURL: https://{organization}.{environment}.formance.cloud/api/search
+  properties:
+  - url: https://docs.formance.com/search
+    type: Documentation
+  - url: https://docs.formance.com/api
+    type: APIReference
+  - url: openapi/formance-openapi.yml
+    type: OpenAPI
+  - url: collections/formance.postman_collection.json
+    type: PostmanCollection
+  - url: collections/formance.opencollection.json
+    type: OpenCollection
+  description: Full-platform Search service that indexes ledger transactions and accounts,
+    payments, and other resources so they can be queried across modules from a single
+    endpoint, with a target/terms query model.
+common:
+- type: GitHubOrganization
+  url: https://github.com/formancehq
+- type: LinkedIn
+  url: https://www.linkedin.com/company/formance
+- type: Website
+  url: https://www.formance.com
+- type: Documentation
+  url: https://docs.formance.com
+- type: Plans
+  url: plans/formance-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/formance-rate-limits.yml
+- type: FinOps
+  url: finops/formance-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

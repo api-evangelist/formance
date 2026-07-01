@@ -1,0 +1,106 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Formance
+providerId: formance
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Financial Infrastructure
+- Ledger
+- Payments
+- Open Source
+- Fintech
+- Plans
+description: >-
+  Formance ships two ways: the open-source components (Ledger, Payments,
+  Wallets, Reconciliation, Flows, Auth, Webhooks) that you can self-host for
+  free under their open-source licenses, and Formance Cloud, a managed
+  multi-tenant platform. Formance Cloud pricing is not published as fixed
+  per-unit list rates; commercial tiers (Cloud and Enterprise) are quoted by
+  sales based on volume, transaction throughput, connectors, and support and
+  deployment needs. Values below describe the shape of the offering rather
+  than reconciled dollar amounts.
+notes: >-
+  Confirm current Cloud tiers, entitlements, and any usage metrics directly
+  with Formance sales; public list pricing was not published at authoring
+  time.
+sources:
+- https://www.formance.com/pricing
+- https://www.formance.com
+- https://github.com/formancehq
+plans:
+- id: formance-open-source
+  name: Open Source (Self-Hosted)
+  type: free
+  description: >-
+    Run the open-source Formance components yourself under their open-source
+    licenses at no license cost. You provide and pay for your own
+    infrastructure, database, and operations.
+  entries:
+  - label: Self-Hosted Components
+    name: self_hosted
+    type: flat
+    metric: license
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 (self-managed infrastructure)
+    userMultiplied: false
+  elements:
+  - name: Ledger
+  - name: Payments
+  - name: Wallets
+  - name: Reconciliation
+  - name: Flows (Orchestration)
+  - name: Auth
+  - name: Webhooks
+- id: formance-cloud
+  name: Formance Cloud
+  type: usage
+  description: >-
+    Managed, multi-tenant Formance Cloud with hosted stacks, upgrades,
+    scaling, and support. Priced by usage / volume; quoted by sales.
+  entries:
+  - label: Managed Platform
+    name: cloud_usage
+    type: usage
+    metric: transactions
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: usage / volume based - contact sales
+    userMultiplied: false
+  elements:
+  - name: Hosted Stacks
+  - name: Managed Upgrades and Scaling
+  - name: Payment Connectors
+  - name: Support
+- id: formance-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Enterprise agreements with volume commitments, dedicated / private
+    deployments, SLAs, security reviews, and premium support. Negotiated
+    terms - contact Formance sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: Dedicated / Private Deployment
+  - name: SLAs and Premium Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

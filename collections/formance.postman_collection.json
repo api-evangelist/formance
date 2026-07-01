@@ -1,0 +1,350 @@
+{
+  "info": {
+    "name": "Formance Platform API",
+    "description": "Open-source financial infrastructure for money movement - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search. Secured with OAuth2 client-credentials Bearer tokens.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://{{organization}}.{{environment}}.formance.cloud" },
+    { "key": "organization", "value": "sandbox" },
+    { "key": "environment", "value": "eu.sandbox" },
+    { "key": "ledger", "value": "main" },
+    { "key": "bearerToken", "value": "" },
+    { "key": "clientId", "value": "" },
+    { "key": "clientSecret", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Request an OAuth2 access token",
+          "request": {
+            "method": "POST",
+            "auth": { "type": "noauth" },
+            "header": [
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "grant_type", "value": "client_credentials" },
+                { "key": "client_id", "value": "{{clientId}}" },
+                { "key": "client_secret", "value": "{{clientSecret}}" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/oauth/token",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "oauth", "token"]
+            },
+            "description": "Exchange a client id and secret for a Bearer access token."
+          }
+        },
+        {
+          "name": "List OAuth clients",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "clients"]
+            }
+          }
+        },
+        {
+          "name": "Create an OAuth client",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"my-client\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/clients",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "clients"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ledger",
+      "item": [
+        {
+          "name": "List ledgers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/ledger/v2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ledger", "v2"]
+            }
+          }
+        },
+        {
+          "name": "Create a ledger",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/ledger/v2/{{ledger}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ledger", "v2", "{{ledger}}"]
+            }
+          }
+        },
+        {
+          "name": "Create a new transaction",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"postings\": [\n    { \"amount\": 100, \"asset\": \"USD/2\", \"source\": \"world\", \"destination\": \"users:001\" }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ledger/v2/{{ledger}}/transactions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ledger", "v2", "{{ledger}}", "transactions"]
+            },
+            "description": "Post a double-entry transaction with explicit postings or a Numscript script."
+          }
+        },
+        {
+          "name": "List accounts from a ledger",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/ledger/v2/{{ledger}}/accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ledger", "v2", "{{ledger}}", "accounts"]
+            }
+          }
+        },
+        {
+          "name": "Get the aggregated balances",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/ledger/v2/{{ledger}}/aggregate/balances",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ledger", "v2", "{{ledger}}", "aggregate", "balances"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "List all installed connectors",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/v1/connectors",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "v1", "connectors"]
+            }
+          }
+        },
+        {
+          "name": "List payments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/v1/payments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "v1", "payments"]
+            }
+          }
+        },
+        {
+          "name": "Create a transfer initiation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/v1/transfer-initiations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "v1", "transfer-initiations"]
+            }
+          }
+        },
+        {
+          "name": "List pools",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/payments/v1/pools",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payments", "v1", "pools"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orchestration",
+      "item": [
+        {
+          "name": "List registered workflows",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/orchestration/v2/workflows",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orchestration", "v2", "workflows"]
+            }
+          }
+        },
+        {
+          "name": "Run a workflow",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/orchestration/v2/workflows/:flowId/instances",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orchestration", "v2", "workflows", ":flowId", "instances"],
+              "variable": [{ "key": "flowId", "value": "" }]
+            }
+          }
+        },
+        {
+          "name": "List triggers",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/orchestration/v2/triggers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orchestration", "v2", "triggers"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallets",
+      "item": [
+        {
+          "name": "List all wallets",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/wallets/v1/wallets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "wallets", "v1", "wallets"]
+            }
+          }
+        },
+        {
+          "name": "Debit a wallet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/wallets/v1/wallets/:id/debit",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "wallets", "v1", "wallets", ":id", "debit"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "description": "Debit a wallet; set pending=true to create a hold to confirm or void later."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reconciliation",
+      "item": [
+        {
+          "name": "List reconciliation policies",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/reconciliation/v1/policies",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reconciliation", "v1", "policies"]
+            }
+          }
+        },
+        {
+          "name": "Reconcile using a policy",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/reconciliation/v1/policies/:policyID/reconciliation",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reconciliation", "v1", "policies", ":policyID", "reconciliation"],
+              "variable": [{ "key": "policyID", "value": "" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Get many configs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/webhooks/configs",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "webhooks", "configs"]
+            }
+          }
+        },
+        {
+          "name": "Insert a new config",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": {
+              "raw": "{{baseUrl}}/api/webhooks/configs",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "webhooks", "configs"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Search across the platform",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target\": \"TRANSACTION\",\n  \"terms\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/search/",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "search", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

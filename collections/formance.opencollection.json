@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an OAuth2 access token (client_credentials).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/auth/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                { "name": "grant_type", "value": "client_credentials" },
+                { "name": "client_id", "value": "{{clientId}}" },
+                { "name": "client_secret", "value": "{{clientSecret}}" }
+              ]
+            }
+          },
+          "docs": "Exchange a client id and secret for a Bearer access token used on every other call."
+        },
+        {
+          "info": {
+            "name": "List OAuth clients.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/auth/clients"
+          },
+          "docs": "List OAuth clients."
+        },
+        {
+          "info": {
+            "name": "Create an OAuth client.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/auth/clients",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Create an OAuth client."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List ledgers.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/ledger/v2"
+          },
+          "docs": "List ledgers."
+        },
+        {
+          "info": { "name": "Create a ledger.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/ledger/v2/:ledger",
+            "params": [
+              { "name": "ledger", "value": "main", "type": "path", "description": "Name of the ledger." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Create a ledger."
+        },
+        {
+          "info": { "name": "Create a new transaction.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/ledger/v2/:ledger/transactions",
+            "params": [
+              { "name": "ledger", "value": "main", "type": "path", "description": "Name of the ledger." }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"postings\": [\n    { \"amount\": 100, \"asset\": \"USD/2\", \"source\": \"world\", \"destination\": \"users:001\" }\n  ]\n}"
+            }
+          },
+          "docs": "Post a double-entry transaction with explicit postings or a Numscript script."
+        },
+        {
+          "info": { "name": "List accounts from a ledger.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/ledger/v2/:ledger/accounts",
+            "params": [
+              { "name": "ledger", "value": "main", "type": "path", "description": "Name of the ledger." }
+            ]
+          },
+          "docs": "List accounts from a ledger."
+        },
+        {
+          "info": { "name": "Get the aggregated balances from selected accounts.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/ledger/v2/:ledger/aggregate/balances",
+            "params": [
+              { "name": "ledger", "value": "main", "type": "path", "description": "Name of the ledger." }
+            ]
+          },
+          "docs": "Get the aggregated balances from selected accounts."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all installed connectors.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/payments/v1/connectors"
+          },
+          "docs": "List all installed connectors."
+        },
+        {
+          "info": { "name": "List payments.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/payments/v1/payments"
+          },
+          "docs": "List payments."
+        },
+        {
+          "info": { "name": "Create a transfer initiation.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/payments/v1/transfer-initiations",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Create a transfer initiation."
+        },
+        {
+          "info": { "name": "List pools.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/payments/v1/pools"
+          },
+          "docs": "List pools."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orchestration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List registered workflows.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/orchestration/v2/workflows"
+          },
+          "docs": "List registered workflows."
+        },
+        {
+          "info": { "name": "Run a workflow.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/orchestration/v2/workflows/:flowId/instances",
+            "params": [
+              { "name": "flowId", "value": "", "type": "path", "description": "The workflow id to run." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Run a workflow and start an instance."
+        },
+        {
+          "info": { "name": "List triggers.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/orchestration/v2/triggers"
+          },
+          "docs": "List triggers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all wallets.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/wallets/v1/wallets"
+          },
+          "docs": "List all wallets."
+        },
+        {
+          "info": { "name": "Debit a wallet.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/wallets/v1/wallets/:id/debit",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The wallet id." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Debit a wallet; set pending=true to create a hold to confirm or void later."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reconciliation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List reconciliation policies.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/reconciliation/v1/policies"
+          },
+          "docs": "List reconciliation policies."
+        },
+        {
+          "info": { "name": "Reconcile using a policy.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/reconciliation/v1/policies/:policyID/reconciliation",
+            "params": [
+              { "name": "policyID", "value": "", "type": "path", "description": "The policy id." }
+            ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Run a reconciliation using a policy."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Get many configs.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/webhooks/configs"
+          },
+          "docs": "Get many webhook configs."
+        },
+        {
+          "info": { "name": "Insert a new config.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/webhooks/configs",
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Insert a new webhook config."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "Search across the platform.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://{{organization}}.{{environment}}.formance.cloud/api/search/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"target\": \"TRANSACTION\",\n  \"terms\": []\n}"
+            }
+          },
+          "docs": "Query indexed ledger, payments, and other resources across modules."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
