@@ -225,6 +225,12 @@ apis:
     payments, and other resources so they can be queried across modules from a single
     endpoint, with a target/terms query model.
 common:
+- type: VulnerabilityDisclosure
+  url: security/formance-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/formance-domain-security.yml
+- type: Authentication
+  url: authentication/formance-authentication.yml
 - type: OAuthScopes
   url: scopes/formance-scopes.yml
 - type: GitHubOrganization
