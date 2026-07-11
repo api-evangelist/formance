@@ -1,0 +1,48 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/formance-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/formance-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+  description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token`
+    for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+scopes:
+- scope: ledger:read
+  description: Read ledger resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml
+- scope: ledger:write
+  description: Write ledger resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml
+- scope: payments:read
+  description: Read payments resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml
+- scope: payments:write
+  description: Write payments resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml
+- scope: wallets:read
+  description: Read wallets resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml
+- scope: wallets:write
+  description: Write wallets resources
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/formance-openapi.yml

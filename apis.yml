@@ -225,6 +225,8 @@ apis:
     payments, and other resources so they can be queried across modules from a single
     endpoint, with a target/terms query model.
 common:
+- type: OAuthScopes
+  url: scopes/formance-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/formancehq
 - type: LinkedIn
@@ -239,6 +241,8 @@ common:
   url: rate-limits/formance-rate-limits.yml
 - type: FinOps
   url: finops/formance-finops.yml
+- url: https://www.formance.com/blog/rss.xml
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
