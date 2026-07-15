@@ -225,6 +225,8 @@ apis:
     payments, and other resources so they can be queried across modules from a single
     endpoint, with a target/terms query model.
 common:
+- type: AgenticAccess
+  url: agentic-access/formance-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/formance-vulnerability-disclosure.yml
 - type: DomainSecurity
