@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Auth
+  description: OAuth2 / OIDC authorization server, clients, and users.
+paths:
+  /api/auth/oauth/token:
+    post:
+      operationId: createToken
+      tags:
+      - Auth
+      summary: Request an OAuth2 access token
+      description: Exchange a client id and secret for a Bearer access token using the `client_credentials` grant. The returned token is used in the `Authorization` header for every other Formance API call.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              - client_id
+              - client_secret
+              properties:
+                grant_type:
+                  type: string
+                  example: client_credentials
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                scope:
+                  type: string
+      responses:
+        '200':
+          description: Access token issued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  token_type:
+                    type: string
+                    example: bearer
+                  expires_in:
+                    type: integer
+                    example: 3600
+                  scope:
+                    type: string
+  /api/auth/.well-known/openid-configuration:
+    get:
+      operationId: getOIDCWellKnowns
+      tags:
+      - Auth
+      summary: Retrieve OpenID Connect configuration
+      responses:
+        '200':
+          description: OIDC configuration document.
+  /api/auth/clients:
+    get:
+      operationId: listClients
+      tags:
+      - Auth
+      summary: List OAuth clients
+      responses:
+        '200':
+          description: List of clients.
+    post:
+      operationId: createClient
+      tags:
+      - Auth
+      summary: Create an OAuth client
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientOptions'
+      responses:
+        '201':
+          description: Client created.
+  /api/auth/clients/{clientId}:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: readClient
+      tags:
+      - Auth
+      summary: Read an OAuth client
+      responses:
+        '200':
+          description: Client.
+    put:
+      operationId: updateClient
+      tags:
+      - Auth
+      summary: Update an OAuth client
+      responses:
+        '200':
+          description: Client updated.
+    delete:
+      operationId: deleteClient
+      tags:
+      - Auth
+      summary: Delete an OAuth client
+      responses:
+        '204':
+          description: Client deleted.
+  /api/auth/clients/{clientId}/secrets:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: createSecret
+      tags:
+      - Auth
+      summary: Add a secret to a client
+      responses:
+        '200':
+          description: Secret created.
+  /api/auth/clients/{clientId}/secrets/{secretId}:
+    parameters:
+    - name: clientId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: secretId
+      in: path
+      required: true
+      schema:
+        type: string
+    delete:
+      operationId: deleteSecret
+      tags:
+      - Auth
+      summary: Delete a client secret
+      responses:
+        '204':
+          description: Secret deleted.
+  /api/auth/users:
+    get:
+      operationId: listUsers
+      tags:
+      - Auth
+      summary: List users
+      responses:
+        '200':
+          description: List of users.
+  /api/auth/users/{userId}:
+    parameters:
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: readUser
+      tags:
+      - Auth
+      summary: Read a user
+      responses:
+        '200':
+          description: User.
+components:
+  schemas:
+    ClientOptions:
+      type: object
+      properties:
+        name:
+          type: string
+        public:
+          type: boolean
+        redirectUris:
+          type: array
+          items:
+            type: string
+        scopes:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

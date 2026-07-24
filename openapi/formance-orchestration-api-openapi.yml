@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Orchestration API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Orchestration
+  description: Flows workflows, instances, and triggers (v2).
+paths:
+  /api/orchestration/v2/workflows:
+    get:
+      operationId: listWorkflows
+      tags:
+      - Orchestration
+      summary: List registered workflows
+      responses:
+        '200':
+          description: List of workflows.
+    post:
+      operationId: createWorkflow
+      tags:
+      - Orchestration
+      summary: Create a workflow
+      responses:
+        '201':
+          description: Workflow created.
+  /api/orchestration/v2/workflows/{flowId}:
+    parameters:
+    - name: flowId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getWorkflow
+      tags:
+      - Orchestration
+      summary: Get a workflow by id
+      responses:
+        '200':
+          description: Workflow.
+    delete:
+      operationId: deleteWorkflow
+      tags:
+      - Orchestration
+      summary: Delete a workflow by id
+      responses:
+        '204':
+          description: Deleted.
+  /api/orchestration/v2/workflows/{flowId}/instances:
+    parameters:
+    - name: flowId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: runWorkflow
+      tags:
+      - Orchestration
+      summary: Run a workflow
+      responses:
+        '201':
+          description: Workflow instance started.
+  /api/orchestration/v2/instances:
+    get:
+      operationId: listInstances
+      tags:
+      - Orchestration
+      summary: List workflow instances
+      responses:
+        '200':
+          description: List of instances.
+  /api/orchestration/v2/instances/{instanceId}:
+    parameters:
+    - name: instanceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getInstance
+      tags:
+      - Orchestration
+      summary: Get a workflow instance by id
+      responses:
+        '200':
+          description: Instance.
+  /api/orchestration/v2/instances/{instanceId}/history:
+    parameters:
+    - name: instanceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getInstanceHistory
+      tags:
+      - Orchestration
+      summary: Get a workflow instance history by id
+      responses:
+        '200':
+          description: Instance history.
+  /api/orchestration/v2/triggers:
+    get:
+      operationId: listTriggers
+      tags:
+      - Orchestration
+      summary: List triggers
+      responses:
+        '200':
+          description: List of triggers.
+    post:
+      operationId: createTrigger
+      tags:
+      - Orchestration
+      summary: Create a trigger
+      responses:
+        '201':
+          description: Trigger created.
+  /api/orchestration/v2/triggers/{triggerId}:
+    parameters:
+    - name: triggerId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: readTrigger
+      tags:
+      - Orchestration
+      summary: Read a trigger
+      responses:
+        '200':
+          description: Trigger.
+    delete:
+      operationId: deleteTrigger
+      tags:
+      - Orchestration
+      summary: Delete a trigger
+      responses:
+        '204':
+          description: Deleted.
+  /api/orchestration/v2/events:
+    post:
+      operationId: sendEvent
+      tags:
+      - Orchestration
+      summary: Send an event to a running workflow instance
+      responses:
+        '204':
+          description: Event sent.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

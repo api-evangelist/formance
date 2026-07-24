@@ -1,0 +1,362 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Ledger API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Ledger
+  description: Programmable double-entry ledger (v2).
+paths:
+  /api/ledger/v2:
+    get:
+      operationId: v2ListLedgers
+      tags:
+      - Ledger
+      summary: List ledgers
+      responses:
+        '200':
+          description: List of ledgers.
+  /api/ledger/v2/{ledger}:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2GetLedger
+      tags:
+      - Ledger
+      summary: Get a ledger
+      responses:
+        '200':
+          description: Ledger.
+    post:
+      operationId: v2CreateLedger
+      tags:
+      - Ledger
+      summary: Create a ledger
+      responses:
+        '204':
+          description: Ledger created.
+  /api/ledger/v2/{ledger}/_info:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2GetLedgerInfo
+      tags:
+      - Ledger
+      summary: Get information about a ledger
+      responses:
+        '200':
+          description: Ledger info.
+  /api/ledger/v2/{ledger}/_bulk:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: v2CreateBulk
+      tags:
+      - Ledger
+      summary: Bulk request
+      responses:
+        '200':
+          description: Bulk result.
+  /api/ledger/v2/{ledger}/accounts:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2ListAccounts
+      tags:
+      - Ledger
+      summary: List accounts from a ledger
+      responses:
+        '200':
+          description: Cursor of accounts.
+    head:
+      operationId: v2CountAccounts
+      tags:
+      - Ledger
+      summary: Count the accounts from a ledger
+      responses:
+        '204':
+          description: Count returned in Count header.
+  /api/ledger/v2/{ledger}/accounts/{address}:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: address
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2GetAccount
+      tags:
+      - Ledger
+      summary: Get account by its address
+      responses:
+        '200':
+          description: Account.
+  /api/ledger/v2/{ledger}/accounts/{address}/metadata:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: address
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: v2AddMetadataToAccount
+      tags:
+      - Ledger
+      summary: Add metadata to an account
+      responses:
+        '204':
+          description: Metadata added.
+  /api/ledger/v2/{ledger}/transactions:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2ListTransactions
+      tags:
+      - Ledger
+      summary: List transactions from a ledger
+      responses:
+        '200':
+          description: Cursor of transactions.
+    post:
+      operationId: v2CreateTransaction
+      tags:
+      - Ledger
+      summary: Create a new transaction
+      description: Post a double-entry transaction to the ledger. Provide either explicit `postings` (source, destination, amount, asset) or a `script` expressed in Numscript to compute complex multi-party money flows.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V2PostTransaction'
+      responses:
+        '200':
+          description: Transaction created.
+    head:
+      operationId: v2CountTransactions
+      tags:
+      - Ledger
+      summary: Count the transactions from a ledger
+      responses:
+        '204':
+          description: Count returned in Count header.
+  /api/ledger/v2/{ledger}/transactions/{id}:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: bigint
+    get:
+      operationId: v2GetTransaction
+      tags:
+      - Ledger
+      summary: Get transaction by its ID
+      responses:
+        '200':
+          description: Transaction.
+  /api/ledger/v2/{ledger}/transactions/{id}/metadata:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: bigint
+    post:
+      operationId: v2AddMetadataOnTransaction
+      tags:
+      - Ledger
+      summary: Set the metadata of a transaction by its ID
+      responses:
+        '204':
+          description: Metadata set.
+  /api/ledger/v2/{ledger}/transactions/{id}/revert:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: bigint
+    post:
+      operationId: v2RevertTransaction
+      tags:
+      - Ledger
+      summary: Revert a ledger transaction by its ID
+      responses:
+        '201':
+          description: Reverting transaction created.
+  /api/ledger/v2/{ledger}/aggregate/balances:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2GetBalancesAggregated
+      tags:
+      - Ledger
+      summary: Get the aggregated balances from selected accounts
+      responses:
+        '200':
+          description: Aggregated balances.
+  /api/ledger/v2/{ledger}/volumes:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2GetVolumesWithBalances
+      tags:
+      - Ledger
+      summary: Get list of volumes with balances for (account/asset)
+      responses:
+        '200':
+          description: Cursor of volumes with balances.
+  /api/ledger/v2/{ledger}/logs:
+    parameters:
+    - name: ledger
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v2ListLogs
+      tags:
+      - Ledger
+      summary: List the logs from a ledger
+      responses:
+        '200':
+          description: Cursor of logs.
+components:
+  schemas:
+    V2Posting:
+      type: object
+      required:
+      - amount
+      - asset
+      - destination
+      - source
+      properties:
+        amount:
+          type: integer
+          format: bigint
+          example: 100
+        asset:
+          type: string
+          example: USD/2
+        destination:
+          type: string
+          example: users:001
+        source:
+          type: string
+          example: world
+    V2PostTransaction:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        postings:
+          type: array
+          items:
+            $ref: '#/components/schemas/V2Posting'
+        script:
+          type: object
+          description: A Numscript program and its variables.
+          properties:
+            plain:
+              type: string
+              example: "send [USD/2 100] (\n  source = @world\n  destination = @users:001\n)\n"
+            vars:
+              type: object
+              additionalProperties: true
+        reference:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

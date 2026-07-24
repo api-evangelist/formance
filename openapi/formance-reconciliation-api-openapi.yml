@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Reconciliation API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Reconciliation
+  description: Reconciliation policies and runs.
+paths:
+  /api/reconciliation/v1/policies:
+    get:
+      operationId: listPolicies
+      tags:
+      - Reconciliation
+      summary: List reconciliation policies
+      responses:
+        '200':
+          description: Cursor of policies.
+    post:
+      operationId: createPolicy
+      tags:
+      - Reconciliation
+      summary: Create a reconciliation policy
+      responses:
+        '201':
+          description: Policy created.
+  /api/reconciliation/v1/policies/{policyID}:
+    parameters:
+    - name: policyID
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPolicy
+      tags:
+      - Reconciliation
+      summary: Get a policy
+      responses:
+        '200':
+          description: Policy.
+    delete:
+      operationId: deletePolicy
+      tags:
+      - Reconciliation
+      summary: Delete a policy
+      responses:
+        '204':
+          description: Deleted.
+  /api/reconciliation/v1/policies/{policyID}/reconciliation:
+    parameters:
+    - name: policyID
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: reconcile
+      tags:
+      - Reconciliation
+      summary: Reconcile using a policy
+      responses:
+        '200':
+          description: Reconciliation result.
+  /api/reconciliation/v1/reconciliations:
+    get:
+      operationId: listReconciliations
+      tags:
+      - Reconciliation
+      summary: List reconciliations
+      responses:
+        '200':
+          description: Cursor of reconciliations.
+  /api/reconciliation/v1/reconciliations/{reconciliationID}:
+    parameters:
+    - name: reconciliationID
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getReconciliation
+      tags:
+      - Reconciliation
+      summary: Get a reconciliation
+      responses:
+        '200':
+          description: Reconciliation.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

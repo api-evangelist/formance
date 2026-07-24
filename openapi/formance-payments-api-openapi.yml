@@ -1,0 +1,311 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Payments API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Payments
+  description: Unified payments connectivity, connectors, and transfers.
+paths:
+  /api/payments/v1/connectors:
+    get:
+      operationId: listAllConnectors
+      tags:
+      - Payments
+      summary: List all installed connectors
+      responses:
+        '200':
+          description: List of connectors.
+  /api/payments/v1/connectors/configs:
+    get:
+      operationId: listConfigsAvailableConnectors
+      tags:
+      - Payments
+      summary: List the configs of each available connector
+      responses:
+        '200':
+          description: Available connector configs.
+  /api/payments/v1/connectors/{connector}:
+    parameters:
+    - name: connector
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: installConnector
+      tags:
+      - Payments
+      summary: Install a connector
+      responses:
+        '201':
+          description: Connector installed.
+  /api/payments/v1/connectors/{connector}/{connectorId}:
+    parameters:
+    - name: connector
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: connectorId
+      in: path
+      required: true
+      schema:
+        type: string
+    delete:
+      operationId: uninstallConnectorV1
+      tags:
+      - Payments
+      summary: Uninstall a connector
+      responses:
+        '204':
+          description: Connector uninstalled.
+  /api/payments/v1/connectors/transfers:
+    post:
+      operationId: connectorsTransfer
+      tags:
+      - Payments
+      summary: Transfer funds between accounts on a connector
+      responses:
+        '200':
+          description: Transfer created.
+  /api/payments/v1/accounts:
+    get:
+      operationId: listAccountsPayments
+      tags:
+      - Payments
+      summary: List accounts
+      responses:
+        '200':
+          description: Cursor of accounts.
+    post:
+      operationId: createAccount
+      tags:
+      - Payments
+      summary: Create an account
+      responses:
+        '200':
+          description: Account created.
+  /api/payments/v1/accounts/{accountId}/balances:
+    parameters:
+    - name: accountId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getAccountBalances
+      tags:
+      - Payments
+      summary: Get account balances
+      responses:
+        '200':
+          description: Balances.
+  /api/payments/v1/payments:
+    get:
+      operationId: listPayments
+      tags:
+      - Payments
+      summary: List payments
+      responses:
+        '200':
+          description: Cursor of payments.
+    post:
+      operationId: createPayment
+      tags:
+      - Payments
+      summary: Create a payment
+      responses:
+        '200':
+          description: Payment created.
+  /api/payments/v1/payments/{paymentId}:
+    parameters:
+    - name: paymentId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPayment
+      tags:
+      - Payments
+      summary: Get a payment
+      responses:
+        '200':
+          description: Payment.
+  /api/payments/v1/bank-accounts:
+    get:
+      operationId: listBankAccounts
+      tags:
+      - Payments
+      summary: List bank accounts
+      responses:
+        '200':
+          description: Cursor of bank accounts.
+    post:
+      operationId: createBankAccount
+      tags:
+      - Payments
+      summary: Create a bank account
+      responses:
+        '200':
+          description: Bank account created.
+  /api/payments/v1/bank-accounts/{bankAccountId}:
+    parameters:
+    - name: bankAccountId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getBankAccount
+      tags:
+      - Payments
+      summary: Get a bank account
+      responses:
+        '200':
+          description: Bank account.
+  /api/payments/v1/transfer-initiations:
+    get:
+      operationId: listTransferInitiations
+      tags:
+      - Payments
+      summary: List transfer initiations
+      responses:
+        '200':
+          description: Cursor of transfer initiations.
+    post:
+      operationId: createTransferInitiation
+      tags:
+      - Payments
+      summary: Create a transfer initiation
+      responses:
+        '200':
+          description: Transfer initiation created.
+  /api/payments/v1/transfer-initiations/{transferId}:
+    parameters:
+    - name: transferId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getTransferInitiation
+      tags:
+      - Payments
+      summary: Get a transfer initiation
+      responses:
+        '200':
+          description: Transfer initiation.
+    delete:
+      operationId: deleteTransferInitiation
+      tags:
+      - Payments
+      summary: Delete a transfer initiation
+      responses:
+        '204':
+          description: Deleted.
+  /api/payments/v1/transfer-initiations/{transferId}/status:
+    parameters:
+    - name: transferId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: updateTransferInitiationStatus
+      tags:
+      - Payments
+      summary: Update the status of a transfer initiation
+      responses:
+        '204':
+          description: Status updated.
+  /api/payments/v1/pools:
+    get:
+      operationId: listPools
+      tags:
+      - Payments
+      summary: List pools
+      responses:
+        '200':
+          description: Cursor of pools.
+    post:
+      operationId: createPool
+      tags:
+      - Payments
+      summary: Create a pool
+      responses:
+        '200':
+          description: Pool created.
+  /api/payments/v1/pools/{poolId}:
+    parameters:
+    - name: poolId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPool
+      tags:
+      - Payments
+      summary: Get a pool
+      responses:
+        '200':
+          description: Pool.
+    delete:
+      operationId: deletePool
+      tags:
+      - Payments
+      summary: Delete a pool
+      responses:
+        '204':
+          description: Deleted.
+  /api/payments/v1/pools/{poolId}/balances:
+    parameters:
+    - name: poolId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getPoolBalances
+      tags:
+      - Payments
+      summary: Get pool balances
+      responses:
+        '200':
+          description: Pool balances.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

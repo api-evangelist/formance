@@ -1,0 +1,206 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Wallets API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Wallets
+  description: White-label wallets, balances, and holds.
+paths:
+  /api/wallets/v1/wallets:
+    get:
+      operationId: listWallets
+      tags:
+      - Wallets
+      summary: List all wallets
+      responses:
+        '200':
+          description: Cursor of wallets.
+    post:
+      operationId: createWallet
+      tags:
+      - Wallets
+      summary: Create a new wallet
+      responses:
+        '201':
+          description: Wallet created.
+  /api/wallets/v1/wallets/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getWallet
+      tags:
+      - Wallets
+      summary: Get a wallet
+      responses:
+        '200':
+          description: Wallet.
+    patch:
+      operationId: updateWallet
+      tags:
+      - Wallets
+      summary: Update a wallet
+      responses:
+        '204':
+          description: Wallet updated.
+  /api/wallets/v1/wallets/{id}/summary:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getWalletSummary
+      tags:
+      - Wallets
+      summary: Get a wallet summary
+      responses:
+        '200':
+          description: Wallet summary.
+  /api/wallets/v1/wallets/{id}/balances:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: listBalances
+      tags:
+      - Wallets
+      summary: List balances of a wallet
+      responses:
+        '200':
+          description: Balances.
+    post:
+      operationId: createBalance
+      tags:
+      - Wallets
+      summary: Create a balance
+      responses:
+        '201':
+          description: Balance created.
+  /api/wallets/v1/wallets/{id}/credit:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: creditWallet
+      tags:
+      - Wallets
+      summary: Credit a wallet
+      responses:
+        '204':
+          description: Wallet credited.
+  /api/wallets/v1/wallets/{id}/debit:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: debitWallet
+      tags:
+      - Wallets
+      summary: Debit a wallet
+      description: Debit a wallet. When `pending` is true a hold is created that must be later confirmed or voided (authorization then capture).
+      responses:
+        '200':
+          description: Debit / hold created.
+  /api/wallets/v1/holds:
+    get:
+      operationId: getHolds
+      tags:
+      - Wallets
+      summary: Get all holds for a wallet
+      responses:
+        '200':
+          description: Cursor of holds.
+  /api/wallets/v1/holds/{holdId}:
+    parameters:
+    - name: holdId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getHold
+      tags:
+      - Wallets
+      summary: Get a hold
+      responses:
+        '200':
+          description: Hold.
+  /api/wallets/v1/holds/{holdId}/confirm:
+    parameters:
+    - name: holdId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: confirmHold
+      tags:
+      - Wallets
+      summary: Confirm a hold
+      responses:
+        '204':
+          description: Hold confirmed (captured).
+  /api/wallets/v1/holds/{holdId}/void:
+    parameters:
+    - name: holdId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: voidHold
+      tags:
+      - Wallets
+      summary: Cancel a hold
+      responses:
+        '204':
+          description: Hold voided.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources

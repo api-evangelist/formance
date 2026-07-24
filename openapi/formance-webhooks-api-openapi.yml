@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: Formance Platform Auth Webhooks API
+  description: Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.
+  termsOfService: https://www.formance.com/terms
+  contact:
+    name: Formance
+    url: https://www.formance.com
+  license:
+    name: MIT
+    url: https://github.com/formancehq/ledger/blob/main/LICENSE
+  version: v1
+servers:
+- url: https://{organization}.{environment}.formance.cloud
+  description: Formance Cloud stack host
+  variables:
+    organization:
+      default: sandbox
+      description: Your organization / stack slug.
+    environment:
+      default: eu.sandbox
+      description: The Formance Cloud environment / region for the stack.
+security:
+- oauth2: []
+tags:
+- name: Webhooks
+  description: Webhook subscription configuration.
+paths:
+  /api/webhooks/configs:
+    get:
+      operationId: getManyConfigs
+      tags:
+      - Webhooks
+      summary: Get many configs
+      responses:
+        '200':
+          description: Cursor of configs.
+    post:
+      operationId: insertConfig
+      tags:
+      - Webhooks
+      summary: Insert a new config
+      responses:
+        '200':
+          description: Config created.
+  /api/webhooks/configs/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      operationId: updateConfig
+      tags:
+      - Webhooks
+      summary: Update one config
+      responses:
+        '200':
+          description: Config updated.
+    delete:
+      operationId: deleteConfig
+      tags:
+      - Webhooks
+      summary: Delete one config
+      responses:
+        '200':
+          description: Config deleted.
+  /api/webhooks/configs/{id}/activate:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      operationId: activateConfig
+      tags:
+      - Webhooks
+      summary: Activate one config
+      responses:
+        '200':
+          description: Config activated.
+  /api/webhooks/configs/{id}/deactivate:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      operationId: deactivateConfig
+      tags:
+      - Webhooks
+      summary: Deactivate one config
+      responses:
+        '200':
+          description: Config deactivated.
+  /api/webhooks/configs/{id}/secret/change:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    put:
+      operationId: changeConfigSecret
+      tags:
+      - Webhooks
+      summary: Change the signing secret of a config
+      responses:
+        '200':
+          description: Secret changed.
+  /api/webhooks/configs/{id}/test:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: testConfig
+      tags:
+      - Webhooks
+      summary: Test one config
+      responses:
+        '200':
+          description: Test result.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: 'OAuth2 client-credentials flow. Exchange a client id and secret at `/api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>`.'
+      flows:
+        clientCredentials:
+          tokenUrl: https://{organization}.{environment}.formance.cloud/api/auth/oauth/token
+          scopes:
+            ledger:read: Read ledger resources
+            ledger:write: Write ledger resources
+            payments:read: Read payments resources
+            payments:write: Write payments resources
+            wallets:read: Read wallets resources
+            wallets:write: Write wallets resources
