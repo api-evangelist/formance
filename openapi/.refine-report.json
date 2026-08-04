@@ -1,0 +1,28 @@
+{
+  "provider": "formance",
+  "sources": [
+    "formance-auth-api-openapi.yml",
+    "formance-ledger-api-openapi.yml",
+    "formance-orchestration-api-openapi.yml",
+    "formance-payments-api-openapi.yml",
+    "formance-reconciliation-api-openapi.yml",
+    "formance-search-api-openapi.yml",
+    "formance-wallets-api-openapi.yml",
+    "formance-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "formance-auth-api-openapi.yml",
+    "formance-ledger-api-openapi.yml",
+    "formance-orchestration-api-openapi.yml",
+    "formance-payments-api-openapi.yml",
+    "formance-reconciliation-api-openapi.yml",
+    "formance-search-api-openapi.yml",
+    "formance-wallets-api-openapi.yml",
+    "formance-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
