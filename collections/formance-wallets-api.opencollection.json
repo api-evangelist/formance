@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth Wallets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets"
+          },
+          "docs": "List all wallets"
+        },
+        {
+          "info": {
+            "name": "Create a new wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets"
+          },
+          "docs": "Create a new wallet"
+        },
+        {
+          "info": {
+            "name": "Get a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a wallet"
+        },
+        {
+          "info": {
+            "name": "Update a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a wallet"
+        },
+        {
+          "info": {
+            "name": "Get a wallet summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id/summary",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a wallet summary"
+        },
+        {
+          "info": {
+            "name": "List balances of a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id/balances",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List balances of a wallet"
+        },
+        {
+          "info": {
+            "name": "Create a balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id/balances",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a balance"
+        },
+        {
+          "info": {
+            "name": "Credit a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id/credit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Credit a wallet"
+        },
+        {
+          "info": {
+            "name": "Debit a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/wallets/:id/debit",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Debit a wallet. When `pending` is true a hold is created that must be later confirmed or voided (authorization then capture)."
+        },
+        {
+          "info": {
+            "name": "Get all holds for a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/holds"
+          },
+          "docs": "Get all holds for a wallet"
+        },
+        {
+          "info": {
+            "name": "Get a hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/holds/:holdId",
+            "params": [
+              {
+                "name": "holdId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a hold"
+        },
+        {
+          "info": {
+            "name": "Confirm a hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/holds/:holdId/confirm",
+            "params": [
+              {
+                "name": "holdId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirm a hold"
+        },
+        {
+          "info": {
+            "name": "Cancel a hold",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/wallets/v1/holds/:holdId/void",
+            "params": [
+              {
+                "name": "holdId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a hold"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

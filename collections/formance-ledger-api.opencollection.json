@@ -1,0 +1,375 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth Ledger API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List ledgers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2"
+          },
+          "docs": "List ledgers"
+        },
+        {
+          "info": {
+            "name": "Get a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a ledger"
+        },
+        {
+          "info": {
+            "name": "Create a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a ledger"
+        },
+        {
+          "info": {
+            "name": "Get information about a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/_info",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information about a ledger"
+        },
+        {
+          "info": {
+            "name": "Bulk request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/_bulk",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Bulk request"
+        },
+        {
+          "info": {
+            "name": "List accounts from a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/accounts",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List accounts from a ledger"
+        },
+        {
+          "info": {
+            "name": "Count the accounts from a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/accounts",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Count the accounts from a ledger"
+        },
+        {
+          "info": {
+            "name": "Get account by its address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/accounts/:address",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get account by its address"
+        },
+        {
+          "info": {
+            "name": "Add metadata to an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/accounts/:address/metadata",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add metadata to an account"
+        },
+        {
+          "info": {
+            "name": "List transactions from a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List transactions from a ledger"
+        },
+        {
+          "info": {
+            "name": "Create a new transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a double-entry transaction to the ledger. Provide either explicit `postings` (source, destination, amount, asset) or a `script` expressed in Numscript to compute complex multi-party money flows."
+        },
+        {
+          "info": {
+            "name": "Count the transactions from a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Count the transactions from a ledger"
+        },
+        {
+          "info": {
+            "name": "Get transaction by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions/:id",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get transaction by its ID"
+        },
+        {
+          "info": {
+            "name": "Set the metadata of a transaction by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions/:id/metadata",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set the metadata of a transaction by its ID"
+        },
+        {
+          "info": {
+            "name": "Revert a ledger transaction by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/transactions/:id/revert",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revert a ledger transaction by its ID"
+        },
+        {
+          "info": {
+            "name": "Get the aggregated balances from selected accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/aggregate/balances",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the aggregated balances from selected accounts"
+        },
+        {
+          "info": {
+            "name": "Get list of volumes with balances for (account/asset)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/volumes",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get list of volumes with balances for (account/asset)"
+        },
+        {
+          "info": {
+            "name": "List the logs from a ledger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/ledger/v2/:ledger/logs",
+            "params": [
+              {
+                "name": "ledger",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the logs from a ledger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

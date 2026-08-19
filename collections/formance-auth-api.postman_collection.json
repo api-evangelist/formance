@@ -1,0 +1,1336 @@
+{
+  "item": [
+    {
+      "id": "3571e55a-4a17-4f00-92b8-8ff56900bb02",
+      "name": "Auth",
+      "description": {
+        "content": "OAuth2 / OIDC authorization server, clients, and users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "83c2ebea-70ac-49d2-a523-2f7d57c3419b",
+          "name": "Request an OAuth2 access token",
+          "request": {
+            "name": "Request an OAuth2 access token",
+            "description": {
+              "content": "Exchange a client id and secret for a Bearer access token using the `client_credentials` grant. The returned token is used in the `Authorization` header for every other Formance API call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "oauth",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "client_secret",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5524893f-23d4-4eb1-a103-dfcc4632a7b4",
+              "name": "Access token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "oauth",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"bearer\",\n  \"expires_in\": 3600,\n  \"scope\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1623587d-ae55-45d9-9bed-d971a105ee11",
+          "name": "Retrieve OpenID Connect configuration",
+          "request": {
+            "name": "Retrieve OpenID Connect configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                ".well-known",
+                "openid-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c87003d8-70a0-4e44-b703-a40c993abea8",
+              "name": "OIDC configuration document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    ".well-known",
+                    "openid-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d25bdfa8-f4fe-4e49-b2bc-8d8e2950151f",
+          "name": "List OAuth clients",
+          "request": {
+            "name": "List OAuth clients",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a04ce45a-5f0f-48ee-b308-cc00a9e0f9c2",
+              "name": "List of clients.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31f8748c-8cb9-4ab4-bcf2-60a47a1c62ec",
+          "name": "Create an OAuth client",
+          "request": {
+            "name": "Create an OAuth client",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"public\": \"<boolean>\",\n  \"redirectUris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad1bd1ca-4a90-473f-abe7-be87525e468f",
+              "name": "Client created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"public\": \"<boolean>\",\n  \"redirectUris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cd92e3e-a3ee-49b4-ae06-cc233b813cee",
+          "name": "Read an OAuth client",
+          "request": {
+            "name": "Read an OAuth client",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4917b2e9-61be-4e81-bd38-02408893dcfe",
+              "name": "Client.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3190836-6622-419c-ba83-ec3278423d5a",
+          "name": "Update an OAuth client",
+          "request": {
+            "name": "Update an OAuth client",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "828a203d-c7d5-4dde-8705-abad35f2fd31",
+              "name": "Client updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f21939e8-5875-4e2b-aa54-a6d6a61d0b85",
+          "name": "Delete an OAuth client",
+          "request": {
+            "name": "Delete an OAuth client",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4812ba9-1462-4973-9874-e9d793a466bc",
+              "name": "Client deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98455a19-1522-42ac-a541-e5059cdf3a5f",
+          "name": "Add a secret to a client",
+          "request": {
+            "name": "Add a secret to a client",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients",
+                ":clientId",
+                "secrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58ee3e7c-34d6-4828-b30c-df12144acbe8",
+              "name": "Secret created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients",
+                    ":clientId",
+                    "secrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40630327-0203-4bec-8b28-b6a750bd8ae4",
+          "name": "Delete a client secret",
+          "request": {
+            "name": "Delete a client secret",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "clients",
+                ":clientId",
+                "secrets",
+                ":secretId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "secretId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a045e56f-628b-4a40-8f8c-1d0302584333",
+              "name": "Secret deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "clients",
+                    ":clientId",
+                    "secrets",
+                    ":secretId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "secretId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ccb8a1d-82ef-42ff-88e1-22f95e501b95",
+          "name": "List users",
+          "request": {
+            "name": "List users",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d130b14a-19f2-4578-9700-c5be50aaae96",
+              "name": "List of users.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df5e805d-fe68-4512-9463-9fa4e1f112b4",
+          "name": "Read a user",
+          "request": {
+            "name": "Read a user",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "auth",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3287df13-ad39-4cab-92cc-3168abfceeac",
+              "name": "User.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "auth",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your organization / stack slug.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "sandbox",
+      "key": "organization"
+    },
+    {
+      "description": {
+        "content": "The Formance Cloud environment / region for the stack.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "eu.sandbox",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.{{environment}}.formance.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ledger:read ledger:write payments:read payments:write wallets:read wallets:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd504618-c66e-4a80-b2e4-6f854348ae7b",
+    "name": "Formance Platform Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.\n\nContact Support:\n Name: Formance",
+      "type": "text/plain"
+    }
+  }
+}

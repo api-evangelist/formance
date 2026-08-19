@@ -1,0 +1,812 @@
+{
+  "item": [
+    {
+      "id": "548ea648-7b25-4ff0-99b6-8268a6984fe5",
+      "name": "Reconciliation",
+      "description": {
+        "content": "Reconciliation policies and runs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0ee1011-df54-44ac-91c6-1e10609c9781",
+          "name": "List reconciliation policies",
+          "request": {
+            "name": "List reconciliation policies",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65738297-0f15-49a8-8b91-3aa90a404569",
+              "name": "Cursor of policies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd25ae37-6753-4c0f-8b01-170faf2b6cf8",
+          "name": "Create a reconciliation policy",
+          "request": {
+            "name": "Create a reconciliation policy",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e561b2e-9767-4147-a35e-339d898750c2",
+              "name": "Policy created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a1ccdc1-d063-43f8-b0d8-98858ccf18e0",
+          "name": "Get a policy",
+          "request": {
+            "name": "Get a policy",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "policies",
+                ":policyID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyID",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e374e32-9672-491d-8243-c60a90a229af",
+              "name": "Policy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "policies",
+                    ":policyID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fa4a496-971e-4e17-b4ee-86138666b8ad",
+          "name": "Delete a policy",
+          "request": {
+            "name": "Delete a policy",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "policies",
+                ":policyID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyID",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a25765f-3be9-42bc-9489-4fc0ec76593d",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "policies",
+                    ":policyID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1386468a-430f-4cdf-9cad-488422ca275b",
+          "name": "Reconcile using a policy",
+          "request": {
+            "name": "Reconcile using a policy",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "policies",
+                ":policyID",
+                "reconciliation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyID",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "caca9b15-5ed4-4c66-be3d-3e0e029a1dc8",
+              "name": "Reconciliation result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "policies",
+                    ":policyID",
+                    "reconciliation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b907fe6-ffb6-4b48-a7e2-bf9c929a7d1f",
+          "name": "List reconciliations",
+          "request": {
+            "name": "List reconciliations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "reconciliations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "720525d6-594d-498c-962d-00bdbec0ae29",
+              "name": "Cursor of reconciliations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "reconciliations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf4a47b9-564a-4813-9b9d-79c6fed9ce04",
+          "name": "Get a reconciliation",
+          "request": {
+            "name": "Get a reconciliation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "reconciliation",
+                "v1",
+                "reconciliations",
+                ":reconciliationID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reconciliationID",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "692463c1-4da6-4f6e-80dc-03f47e53cd3c",
+              "name": "Reconciliation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "reconciliation",
+                    "v1",
+                    "reconciliations",
+                    ":reconciliationID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reconciliationID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your organization / stack slug.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "sandbox",
+      "key": "organization"
+    },
+    {
+      "description": {
+        "content": "The Formance Cloud environment / region for the stack.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "eu.sandbox",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.{{environment}}.formance.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ledger:read ledger:write payments:read payments:write wallets:read wallets:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5e48e167-e6fa-4370-a3fc-fe2041b9276e",
+    "name": "Formance Platform Auth Reconciliation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.\n\nContact Support:\n Name: Formance",
+      "type": "text/plain"
+    }
+  }
+}

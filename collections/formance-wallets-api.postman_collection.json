@@ -1,0 +1,1505 @@
+{
+  "item": [
+    {
+      "id": "5e15c8ac-d2e3-4f5c-9b44-c6189e20366f",
+      "name": "Wallets",
+      "description": {
+        "content": "White-label wallets, balances, and holds.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "172c9825-6729-4579-b592-146299a581f9",
+          "name": "List all wallets",
+          "request": {
+            "name": "List all wallets",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8768e2d5-6065-4b8b-a1df-05ba2efae88b",
+              "name": "Cursor of wallets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d8e5351-1805-4549-afef-3c34451a4e4b",
+          "name": "Create a new wallet",
+          "request": {
+            "name": "Create a new wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e512dbbb-a16f-4184-bc76-a04cd77da41c",
+              "name": "Wallet created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "893c6798-af04-4a65-9727-f8e8d45377c9",
+          "name": "Get a wallet",
+          "request": {
+            "name": "Get a wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f126adc1-0360-49d8-91d7-8b0b205361dc",
+              "name": "Wallet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8319c875-9e44-420f-92e7-320c00d2760a",
+          "name": "Update a wallet",
+          "request": {
+            "name": "Update a wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b011cb73-be19-4629-9e46-05f1aff38511",
+              "name": "Wallet updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0c7b904-3134-4380-b3ff-3e8688298f17",
+          "name": "Get a wallet summary",
+          "request": {
+            "name": "Get a wallet summary",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af235471-3b08-4e18-b15d-3d2727998d83",
+              "name": "Wallet summary.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "489baca6-a022-43e7-a6f8-15dc6e928006",
+          "name": "List balances of a wallet",
+          "request": {
+            "name": "List balances of a wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79c66a3f-68e1-4d0c-aba9-434e8331bc03",
+              "name": "Balances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49384e8e-eb9c-4589-a05d-cb1e8c8beabc",
+          "name": "Create a balance",
+          "request": {
+            "name": "Create a balance",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "72a7ffb3-80b7-47fb-855f-67c3fa34cdbb",
+              "name": "Balance created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e127cdfb-ec52-4b30-bbd6-25e1d8b383ca",
+          "name": "Credit a wallet",
+          "request": {
+            "name": "Credit a wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id",
+                "credit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e28c4d0-f94e-4053-a54a-5e6dab190dd1",
+              "name": "Wallet credited.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id",
+                    "credit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac26beec-ce3c-4b81-8fde-8fc8fa4b51de",
+          "name": "Debit a wallet",
+          "request": {
+            "name": "Debit a wallet",
+            "description": {
+              "content": "Debit a wallet. When `pending` is true a hold is created that must be later confirmed or voided (authorization then capture).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "wallets",
+                ":id",
+                "debit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef8f04f9-a1a8-489b-8c73-3693a56e8938",
+              "name": "Debit / hold created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "wallets",
+                    ":id",
+                    "debit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3827250-6650-43f9-95dd-7a1495dc565c",
+          "name": "Get all holds for a wallet",
+          "request": {
+            "name": "Get all holds for a wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "holds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0103d5ba-1c37-4ca6-8ed8-c41b42a4ab6d",
+              "name": "Cursor of holds.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "holds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dd85b01-9a72-4b5b-b06c-0ecd5ead05d3",
+          "name": "Get a hold",
+          "request": {
+            "name": "Get a hold",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "holds",
+                ":holdId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "holdId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "439c1183-758f-43a0-93c8-e5e65f9b54b8",
+              "name": "Hold.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "holds",
+                    ":holdId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "holdId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "558a594e-8c8e-4f3d-ae77-a5c0e402c930",
+          "name": "Confirm a hold",
+          "request": {
+            "name": "Confirm a hold",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "holds",
+                ":holdId",
+                "confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "holdId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "723e7792-723b-458e-9249-b8ab16ee6174",
+              "name": "Hold confirmed (captured).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "holds",
+                    ":holdId",
+                    "confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "holdId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48fd9825-500a-4a14-9664-0908d2ad6537",
+          "name": "Cancel a hold",
+          "request": {
+            "name": "Cancel a hold",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "wallets",
+                "v1",
+                "holds",
+                ":holdId",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "holdId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c3b993b-b543-4c78-9151-219989001a7b",
+              "name": "Hold voided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "wallets",
+                    "v1",
+                    "holds",
+                    ":holdId",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "holdId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your organization / stack slug.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "sandbox",
+      "key": "organization"
+    },
+    {
+      "description": {
+        "content": "The Formance Cloud environment / region for the stack.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "eu.sandbox",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.{{environment}}.formance.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ledger:read ledger:write payments:read payments:write wallets:read wallets:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "605d0ae2-ad53-4d63-a642-87a0f4bb81f6",
+    "name": "Formance Platform Auth Wallets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.\n\nContact Support:\n Name: Formance",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2597 @@
+{
+  "item": [
+    {
+      "id": "28c473e1-32c5-42f9-b2a4-607c76ebc3e9",
+      "name": "Payments",
+      "description": {
+        "content": "Unified payments connectivity, connectors, and transfers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "813e4c6f-950d-4dbb-81bb-b5a78a4ab9c5",
+          "name": "List all installed connectors",
+          "request": {
+            "name": "List all installed connectors",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d049773a-f24d-45c8-9744-1c6e76d89df7",
+              "name": "List of connectors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c9e79cf-ff39-4698-882c-b8b8fc7b5923",
+          "name": "List the configs of each available connector",
+          "request": {
+            "name": "List the configs of each available connector",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "connectors",
+                "configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26ae79e7-a340-47f3-8e25-e698ef26c017",
+              "name": "Available connector configs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "connectors",
+                    "configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1df0bb4-814a-47be-b461-a4c083d68b6b",
+          "name": "Install a connector",
+          "request": {
+            "name": "Install a connector",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "connectors",
+                ":connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d6e0172-67a5-4ec1-88a4-8f1f8de8e9ca",
+              "name": "Connector installed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "connectors",
+                    ":connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c32b6f7-a372-4680-be08-22e4d2187518",
+          "name": "Uninstall a connector",
+          "request": {
+            "name": "Uninstall a connector",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "connectors",
+                ":connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51c65fea-a891-4c1f-9be0-e26fc5bf7058",
+              "name": "Connector uninstalled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "connectors",
+                    ":connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e040e7ce-6dc1-4b67-80d6-6e8fb2adbf38",
+          "name": "Transfer funds between accounts on a connector",
+          "request": {
+            "name": "Transfer funds between accounts on a connector",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "connectors",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf698b2c-5a7f-4c69-94d2-324468954908",
+              "name": "Transfer created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "connectors",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3947f435-9530-40c2-acaf-2499459b2071",
+          "name": "List accounts",
+          "request": {
+            "name": "List accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a6b58a6-c289-4fd1-b00f-48fcdca813bb",
+              "name": "Cursor of accounts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f30b219-6b2c-4154-b222-c7dbad1dd5fe",
+          "name": "Create an account",
+          "request": {
+            "name": "Create an account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fb3490b-bfd8-453a-937c-163d3214bd8e",
+              "name": "Account created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0c2da61-66d7-4143-91d4-10e9a3f4813b",
+          "name": "Get account balances",
+          "request": {
+            "name": "Get account balances",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "accounts",
+                ":accountId",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "717b5ad1-48e1-4bb6-bfcf-d1163ddde3bf",
+              "name": "Balances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "accounts",
+                    ":accountId",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c296e67-ed3c-4fd4-b509-20f56dde47fd",
+          "name": "List payments",
+          "request": {
+            "name": "List payments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "707199f4-971c-4c70-a6b2-fd927f99c2fe",
+              "name": "Cursor of payments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dd12452-47b4-4b6f-bd73-f28e1613567d",
+          "name": "Create a payment",
+          "request": {
+            "name": "Create a payment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d642c71e-dd2f-468e-8320-1647d59a2465",
+              "name": "Payment created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6abd347-d3df-46fe-b018-3cc3caed414b",
+          "name": "Get a payment",
+          "request": {
+            "name": "Get a payment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "payments",
+                ":paymentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11c57680-fd87-43c4-9ccd-67980c4e1fce",
+              "name": "Payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "payments",
+                    ":paymentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0605258-96dc-40e5-8622-eb4e5d057f72",
+          "name": "List bank accounts",
+          "request": {
+            "name": "List bank accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "bank-accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75506ca7-bc17-4572-9037-2f3c5a33027f",
+              "name": "Cursor of bank accounts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "bank-accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0183939-6f3f-492c-913c-a635cf540269",
+          "name": "Create a bank account",
+          "request": {
+            "name": "Create a bank account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "bank-accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba8ace1d-ca40-414c-b678-de87b546cf46",
+              "name": "Bank account created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "bank-accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbbe1164-b000-4a8d-89b7-22287155d2cc",
+          "name": "Get a bank account",
+          "request": {
+            "name": "Get a bank account",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "bank-accounts",
+                ":bankAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bankAccountId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1c0cdfb-953b-499c-8633-69ba39103100",
+              "name": "Bank account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "bank-accounts",
+                    ":bankAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bankAccountId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47f2ecef-bf42-42be-8e88-89451ba63587",
+          "name": "List transfer initiations",
+          "request": {
+            "name": "List transfer initiations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "transfer-initiations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42bbe998-547e-479f-b7cb-b696b6e0d872",
+              "name": "Cursor of transfer initiations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "transfer-initiations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "159b413c-e5a0-4939-aa54-5c5886d9743d",
+          "name": "Create a transfer initiation",
+          "request": {
+            "name": "Create a transfer initiation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "transfer-initiations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d09a8cc-608a-403f-b725-fde831d29ce4",
+              "name": "Transfer initiation created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "transfer-initiations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c44d13f-c405-4be6-9fbc-904fb6119c2d",
+          "name": "Get a transfer initiation",
+          "request": {
+            "name": "Get a transfer initiation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "transfer-initiations",
+                ":transferId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transferId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "defdf393-a96a-465f-b7d0-35fbe4aa3158",
+              "name": "Transfer initiation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "transfer-initiations",
+                    ":transferId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transferId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ecfc9ff-695c-4b9a-9412-76e5d3b7c94c",
+          "name": "Delete a transfer initiation",
+          "request": {
+            "name": "Delete a transfer initiation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "transfer-initiations",
+                ":transferId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transferId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c755877b-f845-4a55-808d-b5618539ab80",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "transfer-initiations",
+                    ":transferId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transferId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84e3b064-613d-4ec8-9c92-e1cbabd246e6",
+          "name": "Update the status of a transfer initiation",
+          "request": {
+            "name": "Update the status of a transfer initiation",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "transfer-initiations",
+                ":transferId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transferId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb6c5fad-d727-4475-9ad6-01893ac639ef",
+              "name": "Status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "transfer-initiations",
+                    ":transferId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transferId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1002336-eaf0-488c-9cbd-553347038a3c",
+          "name": "List pools",
+          "request": {
+            "name": "List pools",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdd32797-60f0-4e31-8853-88cf7d214db6",
+              "name": "Cursor of pools.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8051904-3f6d-42fa-87b6-a32af244f00d",
+          "name": "Create a pool",
+          "request": {
+            "name": "Create a pool",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fabac4a2-c8d7-4eb0-8d44-28d9f92982c7",
+              "name": "Pool created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "faabb3c1-86bf-44e1-91eb-431e948ac152",
+          "name": "Get a pool",
+          "request": {
+            "name": "Get a pool",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "pools",
+                ":poolId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b46df970-7674-40e1-9043-65c7627d2a4e",
+              "name": "Pool.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "pools",
+                    ":poolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0acaa21b-a19a-4c11-a45f-0d6f88504879",
+          "name": "Delete a pool",
+          "request": {
+            "name": "Delete a pool",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "pools",
+                ":poolId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cc4d838-5791-4c65-84f4-9db7183e2607",
+              "name": "Deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "pools",
+                    ":poolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e026496a-d166-4650-a319-7536e967e45c",
+          "name": "Get pool balances",
+          "request": {
+            "name": "Get pool balances",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "payments",
+                "v1",
+                "pools",
+                ":poolId",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "poolId",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your organization / stack slug.",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                },
+                {
+                  "description": "The Formance Cloud environment / region for the stack.",
+                  "type": "any",
+                  "value": "{{environment}}",
+                  "key": "environment"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af29fc88-ad68-4ad6-a677-19df673ebcad",
+              "name": "Pool balances.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "payments",
+                    "v1",
+                    "pools",
+                    ":poolId",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "poolId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your organization / stack slug.",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    },
+                    {
+                      "description": "The Formance Cloud environment / region for the stack.",
+                      "type": "any",
+                      "value": "{{environment}}",
+                      "key": "environment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your organization / stack slug.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "sandbox",
+      "key": "organization"
+    },
+    {
+      "description": {
+        "content": "The Formance Cloud environment / region for the stack.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "eu.sandbox",
+      "key": "environment"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.{{environment}}.formance.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ledger:read ledger:write payments:read payments:write wallets:read wallets:write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7da2155f-dac5-4af8-8495-2e693b9d724b",
+    "name": "Formance Platform Auth Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Open-source financial infrastructure for money movement. This specification describes the REST surface of the Formance Platform across its modules - Ledger (v2), Payments, Orchestration / Flows (v2), Wallets, Reconciliation, Auth, Webhooks, and Search - as exposed by Formance Cloud. All resource modules are served under a per-module path prefix (for example `/api/ledger`, `/api/payments`) on a single stack host and are secured with OAuth2 client-credentials Bearer tokens issued by the Auth module.\n\nContact Support:\n Name: Formance",
+      "type": "text/plain"
+    }
+  }
+}

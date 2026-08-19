@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an OAuth2 access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "scope",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange a client id and secret for a Bearer access token using the `client_credentials` grant. The returned token is used in the `Authorization` header for every other Formance API call."
+        },
+        {
+          "info": {
+            "name": "Retrieve OpenID Connect configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/.well-known/openid-configuration"
+          },
+          "docs": "Retrieve OpenID Connect configuration"
+        },
+        {
+          "info": {
+            "name": "List OAuth clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients"
+          },
+          "docs": "List OAuth clients"
+        },
+        {
+          "info": {
+            "name": "Create an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an OAuth client"
+        },
+        {
+          "info": {
+            "name": "Read an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read an OAuth client"
+        },
+        {
+          "info": {
+            "name": "Update an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update an OAuth client"
+        },
+        {
+          "info": {
+            "name": "Delete an OAuth client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an OAuth client"
+        },
+        {
+          "info": {
+            "name": "Add a secret to a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients/:clientId/secrets",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add a secret to a client"
+        },
+        {
+          "info": {
+            "name": "Delete a client secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/clients/:clientId/secrets/:secretId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "secretId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a client secret"
+        },
+        {
+          "info": {
+            "name": "List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/users"
+          },
+          "docs": "List users"
+        },
+        {
+          "info": {
+            "name": "Read a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/auth/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

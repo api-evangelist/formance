@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth Orchestration API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orchestration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List registered workflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/workflows"
+          },
+          "docs": "List registered workflows"
+        },
+        {
+          "info": {
+            "name": "Create a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/workflows"
+          },
+          "docs": "Create a workflow"
+        },
+        {
+          "info": {
+            "name": "Get a workflow by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/workflows/:flowId",
+            "params": [
+              {
+                "name": "flowId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a workflow by id"
+        },
+        {
+          "info": {
+            "name": "Delete a workflow by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/workflows/:flowId",
+            "params": [
+              {
+                "name": "flowId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a workflow by id"
+        },
+        {
+          "info": {
+            "name": "Run a workflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/workflows/:flowId/instances",
+            "params": [
+              {
+                "name": "flowId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Run a workflow"
+        },
+        {
+          "info": {
+            "name": "List workflow instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/instances"
+          },
+          "docs": "List workflow instances"
+        },
+        {
+          "info": {
+            "name": "Get a workflow instance by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/instances/:instanceId",
+            "params": [
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a workflow instance by id"
+        },
+        {
+          "info": {
+            "name": "Get a workflow instance history by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/instances/:instanceId/history",
+            "params": [
+              {
+                "name": "instanceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a workflow instance history by id"
+        },
+        {
+          "info": {
+            "name": "List triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/triggers"
+          },
+          "docs": "List triggers"
+        },
+        {
+          "info": {
+            "name": "Create a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/triggers"
+          },
+          "docs": "Create a trigger"
+        },
+        {
+          "info": {
+            "name": "Read a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read a trigger"
+        },
+        {
+          "info": {
+            "name": "Delete a trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/triggers/:triggerId",
+            "params": [
+              {
+                "name": "triggerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a trigger"
+        },
+        {
+          "info": {
+            "name": "Send an event to a running workflow instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/orchestration/v2/events"
+          },
+          "docs": "Send an event to a running workflow instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

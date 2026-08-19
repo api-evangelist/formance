@@ -1,0 +1,375 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth Payments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all installed connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/connectors"
+          },
+          "docs": "List all installed connectors"
+        },
+        {
+          "info": {
+            "name": "List the configs of each available connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/connectors/configs"
+          },
+          "docs": "List the configs of each available connector"
+        },
+        {
+          "info": {
+            "name": "Install a connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/connectors/:connector",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Install a connector"
+        },
+        {
+          "info": {
+            "name": "Uninstall a connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/connectors/:connector/:connectorId",
+            "params": [
+              {
+                "name": "connector",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Uninstall a connector"
+        },
+        {
+          "info": {
+            "name": "Transfer funds between accounts on a connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/connectors/transfers"
+          },
+          "docs": "Transfer funds between accounts on a connector"
+        },
+        {
+          "info": {
+            "name": "List accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/accounts"
+          },
+          "docs": "List accounts"
+        },
+        {
+          "info": {
+            "name": "Create an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/accounts"
+          },
+          "docs": "Create an account"
+        },
+        {
+          "info": {
+            "name": "Get account balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/accounts/:accountId/balances",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get account balances"
+        },
+        {
+          "info": {
+            "name": "List payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/payments"
+          },
+          "docs": "List payments"
+        },
+        {
+          "info": {
+            "name": "Create a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/payments"
+          },
+          "docs": "Create a payment"
+        },
+        {
+          "info": {
+            "name": "Get a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a payment"
+        },
+        {
+          "info": {
+            "name": "List bank accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/bank-accounts"
+          },
+          "docs": "List bank accounts"
+        },
+        {
+          "info": {
+            "name": "Create a bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/bank-accounts"
+          },
+          "docs": "Create a bank account"
+        },
+        {
+          "info": {
+            "name": "Get a bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/bank-accounts/:bankAccountId",
+            "params": [
+              {
+                "name": "bankAccountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a bank account"
+        },
+        {
+          "info": {
+            "name": "List transfer initiations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/transfer-initiations"
+          },
+          "docs": "List transfer initiations"
+        },
+        {
+          "info": {
+            "name": "Create a transfer initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/transfer-initiations"
+          },
+          "docs": "Create a transfer initiation"
+        },
+        {
+          "info": {
+            "name": "Get a transfer initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/transfer-initiations/:transferId",
+            "params": [
+              {
+                "name": "transferId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a transfer initiation"
+        },
+        {
+          "info": {
+            "name": "Delete a transfer initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/transfer-initiations/:transferId",
+            "params": [
+              {
+                "name": "transferId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a transfer initiation"
+        },
+        {
+          "info": {
+            "name": "Update the status of a transfer initiation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/transfer-initiations/:transferId/status",
+            "params": [
+              {
+                "name": "transferId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the status of a transfer initiation"
+        },
+        {
+          "info": {
+            "name": "List pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/pools"
+          },
+          "docs": "List pools"
+        },
+        {
+          "info": {
+            "name": "Create a pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/pools"
+          },
+          "docs": "Create a pool"
+        },
+        {
+          "info": {
+            "name": "Get a pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/pools/:poolId",
+            "params": [
+              {
+                "name": "poolId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a pool"
+        },
+        {
+          "info": {
+            "name": "Delete a pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/pools/:poolId",
+            "params": [
+              {
+                "name": "poolId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a pool"
+        },
+        {
+          "info": {
+            "name": "Get pool balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/payments/v1/pools/:poolId/balances",
+            "params": [
+              {
+                "name": "poolId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get pool balances"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

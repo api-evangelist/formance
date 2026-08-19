@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Formance Platform Auth Reconciliation API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{organization}.{environment}.formance.cloud/api/auth/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reconciliation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List reconciliation policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/policies"
+          },
+          "docs": "List reconciliation policies"
+        },
+        {
+          "info": {
+            "name": "Create a reconciliation policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/policies"
+          },
+          "docs": "Create a reconciliation policy"
+        },
+        {
+          "info": {
+            "name": "Get a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/policies/:policyID",
+            "params": [
+              {
+                "name": "policyID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a policy"
+        },
+        {
+          "info": {
+            "name": "Delete a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/policies/:policyID",
+            "params": [
+              {
+                "name": "policyID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a policy"
+        },
+        {
+          "info": {
+            "name": "Reconcile using a policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/policies/:policyID/reconciliation",
+            "params": [
+              {
+                "name": "policyID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reconcile using a policy"
+        },
+        {
+          "info": {
+            "name": "List reconciliations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/reconciliations"
+          },
+          "docs": "List reconciliations"
+        },
+        {
+          "info": {
+            "name": "Get a reconciliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.{environment}.formance.cloud/api/reconciliation/v1/reconciliations/:reconciliationID",
+            "params": [
+              {
+                "name": "reconciliationID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a reconciliation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
