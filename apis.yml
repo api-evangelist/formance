@@ -32,7 +32,7 @@ tags:
 - Fintech
 created: '2026-07-01'
 modified: '2026-07-01'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: formance:formance-auth-api
   name: Formance Auth API
