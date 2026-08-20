@@ -28,6 +28,15 @@ tags:
 - Payments
 - Orchestration
 - Money Movement
+- Open-Source
+- Fintech
+tags_raw:
+- Financial Infrastructure
+- Ledger
+- Double-Entry Accounting
+- Payments
+- Orchestration
+- Money Movement
 - Open Source
 - Fintech
 created: '2026-07-01'
@@ -40,6 +49,8 @@ apis:
   humanURL: https://docs.formance.com/ledger
   baseURL: https://{organization}.{environment}.formance.cloud/api/ledger
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -264,6 +275,8 @@ apis:
   humanURL: https://docs.formance.com/ledger
   baseURL: https://{organization}.{environment}.formance.cloud/api/ledger
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
