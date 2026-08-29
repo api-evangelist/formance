@@ -7,6 +7,18 @@ description: Formance builds open-source financial infrastructure for money move
   a unified Payments connectivity layer and Flows orchestration, plus Wallets, Reconciliation,
   Auth, and Webhooks. It is delivered as open-source components and as a managed multi-tenant
   Formance Cloud, exposing REST APIs secured with OAuth2 client-credentials Bearer tokens.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
