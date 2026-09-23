@@ -1,14 +1,7 @@
 {
   "provider": "formance",
   "sources": [
-    "formance-auth-api-openapi.yml",
-    "formance-ledger-api-openapi.yml",
-    "formance-orchestration-api-openapi.yml",
-    "formance-payments-api-openapi.yml",
-    "formance-reconciliation-api-openapi.yml",
-    "formance-search-api-openapi.yml",
-    "formance-wallets-api-openapi.yml",
-    "formance-webhooks-api-openapi.yml"
+    "_original/formance-openapi.yml"
   ],
   "outputs": [
     "formance-auth-api-openapi.yml",
@@ -23,6 +16,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "formance-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "formance-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-ledger-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-orchestration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-reconciliation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-wallets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "formance-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
