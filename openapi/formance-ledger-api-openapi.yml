@@ -299,6 +299,27 @@ paths:
           description: Cursor of logs.
 components:
   schemas:
+    V2Posting:
+      type: object
+      required:
+      - amount
+      - asset
+      - destination
+      - source
+      properties:
+        amount:
+          type: integer
+          format: bigint
+          example: 100
+        asset:
+          type: string
+          example: USD/2
+        destination:
+          type: string
+          example: users:001
+        source:
+          type: string
+          example: world
     V2PostTransaction:
       type: object
       properties:
@@ -325,27 +346,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    V2Posting:
-      type: object
-      required:
-      - amount
-      - asset
-      - destination
-      - source
-      properties:
-        amount:
-          type: integer
-          format: bigint
-          example: 100
-        asset:
-          type: string
-          example: USD/2
-        destination:
-          type: string
-          example: users:001
-        source:
-          type: string
-          example: world
   securitySchemes:
     oauth2:
       type: oauth2
