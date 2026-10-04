@@ -33,6 +33,9 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/formance.png
+x-docs-platform: mintlify
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Financial Infrastructure
 - Ledger
@@ -317,6 +320,9 @@ apis:
   - type: Documentation
     url: https://docs.formance.com/search
 common:
+- type: CapabilityMap
+  url: capabilities/formance-capability-edges.yml
+  name: Formance Business Capability Map
 - type: AgenticAccess
   url: agentic-access/formance-agentic-access.yml
 - type: VulnerabilityDisclosure
