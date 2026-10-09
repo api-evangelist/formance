@@ -1,17 +1,19 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/formance-openapi.yml
+source: openapi/formance-auth-api-openapi.yml, openapi/formance-ledger-api-openapi.yml, openapi/formance-orchestration-api-openapi.yml,
+  openapi/formance-payments-api-openapi.yml, openapi/formance-reconciliation-api-openapi.yml,
+  openapi/formance-search-api-openapi.yml, openapi/formance-wallets-api-openapi.yml, openapi/formance-webhooks-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 95
   by_action_class:
-    acting: 46
-    connected: 49
+    acting: 45
+    connected: 50
   by_consequence:
-    write: 34
-    read: 49
+    write: 33
+    read: 50
     physical: 12
   human_in_the_loop_required: 0
 operations:
@@ -377,6 +379,174 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/orchestration/v2/workflows
+  method: get
+  operationId: listWorkflows
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/workflows
+  method: post
+  operationId: createWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/orchestration/v2/workflows/{flowId}
+  method: get
+  operationId: getWorkflow
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/workflows/{flowId}
+  method: delete
+  operationId: deleteWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/orchestration/v2/workflows/{flowId}/instances
+  method: post
+  operationId: runWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/orchestration/v2/instances
+  method: get
+  operationId: listInstances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/instances/{instanceId}
+  method: get
+  operationId: getInstance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/instances/{instanceId}/history
+  method: get
+  operationId: getInstanceHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/triggers
+  method: get
+  operationId: listTriggers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/triggers
+  method: post
+  operationId: createTrigger
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/orchestration/v2/triggers/{triggerId}
+  method: get
+  operationId: readTrigger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/orchestration/v2/triggers/{triggerId}
+  method: delete
+  operationId: deleteTrigger
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/orchestration/v2/events
+  method: post
+  operationId: sendEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /api/payments/v1/connectors
   method: get
   operationId: listAllConnectors
@@ -705,9 +875,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/workflows
+- path: /api/reconciliation/v1/policies
   method: get
-  operationId: listWorkflows
+  operationId: listPolicies
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -715,9 +885,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/workflows
+- path: /api/reconciliation/v1/policies
   method: post
-  operationId: createWorkflow
+  operationId: createPolicy
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -731,9 +901,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/orchestration/v2/workflows/{flowId}
+- path: /api/reconciliation/v1/policies/{policyID}
   method: get
-  operationId: getWorkflow
+  operationId: getPolicy
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -741,9 +911,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/workflows/{flowId}
+- path: /api/reconciliation/v1/policies/{policyID}
   method: delete
-  operationId: deleteWorkflow
+  operationId: deletePolicy
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -757,9 +927,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/orchestration/v2/workflows/{flowId}/instances
+- path: /api/reconciliation/v1/policies/{policyID}/reconciliation
   method: post
-  operationId: runWorkflow
+  operationId: reconcile
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -773,9 +943,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/orchestration/v2/instances
+- path: /api/reconciliation/v1/reconciliations
   method: get
-  operationId: listInstances
+  operationId: listReconciliations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -783,9 +953,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/instances/{instanceId}
+- path: /api/reconciliation/v1/reconciliations/{reconciliationID}
   method: get
-  operationId: getInstance
+  operationId: getReconciliation
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -793,45 +963,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/instances/{instanceId}/history
-  method: get
-  operationId: getInstanceHistory
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/orchestration/v2/triggers
-  method: get
-  operationId: listTriggers
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/orchestration/v2/triggers
+- path: /api/search/
   method: post
-  operationId: createTrigger
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/orchestration/v2/triggers/{triggerId}
-  method: get
-  operationId: readTrigger
+  operationId: search
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -839,40 +973,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/orchestration/v2/triggers/{triggerId}
-  method: delete
-  operationId: deleteTrigger
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/orchestration/v2/events
-  method: post
-  operationId: sendEvent
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/wallets/v1/wallets
   method: get
   operationId: listWallets
@@ -1045,94 +1145,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/reconciliation/v1/policies
-  method: get
-  operationId: listPolicies
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/reconciliation/v1/policies
-  method: post
-  operationId: createPolicy
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/reconciliation/v1/policies/{policyID}
-  method: get
-  operationId: getPolicy
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/reconciliation/v1/policies/{policyID}
-  method: delete
-  operationId: deletePolicy
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/reconciliation/v1/policies/{policyID}/reconciliation
-  method: post
-  operationId: reconcile
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/reconciliation/v1/reconciliations
-  method: get
-  operationId: listReconciliations
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/reconciliation/v1/reconciliations/{reconciliationID}
-  method: get
-  operationId: getReconciliation
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /api/webhooks/configs
   method: get
   operationId: getManyConfigs
@@ -1249,19 +1261,3 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/search/
-  method: post
-  operationId: search
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
