@@ -1,4 +1,4 @@
-# Formance (formance)
+# Formance
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,221 +66,137 @@
 
 Formance builds open-source financial infrastructure for money movement. The platform pairs a programmable double-entry Ledger (with the Numscript DSL) with a unified Payments connectivity layer and Flows orchestration, plus Wallets, Reconciliation, Auth, and Webhooks. It is delivered as open-source components and as a managed multi-tenant Formance Cloud, exposing REST APIs secured with OAuth2 client-credentials Bearer tokens.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/formance/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/formance/refs/heads/main/apis.yml)
+**Areas:** Financial Infrastructure · Ledger · double-entry-accounting · Payments · Orchestration · Money Movement · Open Source · Fintech
 
-## Tags
+## Formance on APIs.io
 
-- Financial Infrastructure
-- Ledger
-- Double-Entry Accounting
-- Payments
-- Orchestration
-- Money Movement
-- Open Source
-- Fintech
+Everything profiled for Formance is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/formance/](https://apis.io/providers/formance/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [Formance Auth API](https://apis.io/apis/formance/formance-auth-api/) — OAuth2 / OIDC authorization server, clients, and users.
+- [Formance Ledger API](https://apis.io/apis/formance/formance-ledger-api/) — Programmable double-entry ledger (v2).
+- [Formance Orchestration API](https://apis.io/apis/formance/formance-orchestration-api/) — Flows workflows, instances, and triggers (v2).
+- [Formance Payments API](https://apis.io/apis/formance/formance-payments-api/) — Unified payments connectivity, connectors, and transfers.
+- [Formance Reconciliation API](https://apis.io/apis/formance/formance-reconciliation-api/) — Reconciliation policies and runs.
+- [Formance Search API](https://apis.io/apis/formance/formance-search-api/) — Cross-module search.
+- [Formance Wallets API](https://apis.io/apis/formance/formance-wallets-api/) — White-label wallets, balances, and holds.
+- [Formance Webhooks API](https://apis.io/apis/formance/formance-webhooks-api/) — Webhook subscription configuration.
 
-## Authentication
+### Published properties
 
-All Formance APIs are secured with OAuth2 client-credentials. Exchange a client id and secret at `POST /api/auth/oauth/token` for a Bearer access token, then send it as `Authorization: Bearer <token>` on every request. Modules are served under per-module path prefixes (for example `/api/ledger`, `/api/payments`) on a single Formance Cloud stack host, `https://{organization}.{environment}.formance.cloud`.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Formance Ledger API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The programmable, open-source double-entry Ledger (v2). Create ledgers, post immutable transactions with multi-posting sources and destinations, read accounts, balances, aggregated balances and volumes, attach metadata, revert transactions, and model complex money flows with the Numscript DSL. Supports bulk requests and a full transaction/account log.
+- [Formance Agentic Access](https://apis.io/agentic-access/formance/formance-agentic-access/)
 
-- **Human URL:** [https://docs.formance.com/ledger](https://docs.formance.com/ledger)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/ledger`
+#### Collections (9)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Ledger
-- Double-Entry Accounting
-- Transactions
-- Accounts
-- Balances
-- Numscript
+- [Formance Platform API](https://apis.io/collections/formance/open-formance/)
+- [Formance Platform Auth API](https://apis.io/collections/formance/open-formance-auth-api/)
+- [Formance Platform Auth Ledger API](https://apis.io/collections/formance/open-formance-ledger-api/)
+- [Formance Platform Auth Orchestration API](https://apis.io/collections/formance/open-formance-orchestration-api/)
+- [Formance Platform Auth Payments API](https://apis.io/collections/formance/open-formance-payments-api/)
+- [Formance Platform Auth Reconciliation API](https://apis.io/collections/formance/open-formance-reconciliation-api/)
+- [Formance Platform Auth Search API](https://apis.io/collections/formance/open-formance-search-api/)
+- [Formance Platform Auth Wallets API](https://apis.io/collections/formance/open-formance-wallets-api/)
+- [Formance Platform Auth Webhooks API](https://apis.io/collections/formance/open-formance-webhooks-api/)
 
-#### Properties
+#### Security (3)
 
-- [Documentation](https://docs.formance.com/ledger)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Formance Payments API
+- [Formance Authentication](https://apis.io/security/formance/formance-authentication/)
+- [Formance Domain Security](https://apis.io/security/formance/formance-domain-security/)
+- [Formance Vulnerability Disclosure](https://apis.io/security/formance/formance-vulnerability-disclosure/)
 
-Unified Payments connectivity layer. Install and configure connectors to payment processors and banks (Stripe, Wise, Mangopay, Adyen, and more), ingest payments and accounts, manage bank accounts, initiate and manage transfers / payment initiations, and group accounts into pools with aggregated balances. Available as v1 and the expanded v3 API surface.
+#### OAuth scopes (1)
 
-- **Human URL:** [https://docs.formance.com/payments](https://docs.formance.com/payments)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/payments`
+The permissions the API asks for.
 
-#### Tags
+- [Formance Scopes](https://apis.io/scopes/formance/formance-scopes/)
 
-- Payments
-- Connectors
-- Bank Accounts
-- Transfer Initiation
-- Pools
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://docs.formance.com/payments)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Formance Plans Pricing](https://apis.io/plans/formance/formance-plans-pricing/)
 
-### Formance Orchestration API
+#### Rate limits (1)
 
-Flows orchestration engine (v2) for composing durable financial workflows across the Ledger, Payments, and Wallets. Define and run workflows, inspect workflow instances and their stage history, and wire event-driven triggers that launch workflows in response to platform events.
+Published request limits.
 
-- **Human URL:** [https://docs.formance.com/flows](https://docs.formance.com/flows)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/orchestration`
+- [Formance Rate Limits](https://apis.io/rate-limits/formance/formance-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- Orchestration
-- Flows
-- Workflows
-- Triggers
-- Money Movement
+What the API costs to run, by operation.
 
-#### Properties
+- [Formance Finops](https://apis.io/finops/formance/formance-finops/)
 
-- [Documentation](https://docs.formance.com/flows)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### Formance Wallets API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-White-label Wallets service built on top of the Ledger. Create and list wallets and named balances, credit and debit wallets, place and confirm or void holds (authorization-then-capture), and read wallet summaries, balances, and transactions.
-
-- **Human URL:** [https://docs.formance.com/wallets](https://docs.formance.com/wallets)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/wallets`
-
-#### Tags
-
-- Wallets
-- Balances
-- Holds
-- Credit
-- Debit
-
-#### Properties
-
-- [Documentation](https://docs.formance.com/wallets)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formance Reconciliation API
-
-Reconciliation toolkit for auditing assets under management. Define reconciliation policies, run reconciliations that compare Ledger balances against payments-side balances at a point in time, and list or retrieve reconciliation results.
-
-- **Human URL:** [https://docs.formance.com/reconciliation](https://docs.formance.com/reconciliation)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/reconciliation`
-
-#### Tags
-
-- Reconciliation
-- Policies
-- Audit
-- Assets Under Management
-
-#### Properties
-
-- [Documentation](https://docs.formance.com/reconciliation)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formance Auth API
-
-OAuth2 / OIDC authorization server for the platform. Issue client-credentials access tokens, manage OAuth clients and their secrets, list users, and read the OpenID Connect well-known configuration used to secure every other Formance API.
-
-- **Human URL:** [https://docs.formance.com/security](https://docs.formance.com/security)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/auth`
-
-#### Tags
-
-- Auth
-- OAuth2
-- Clients
-- Identity
-- OIDC
-
-#### Properties
-
-- [Documentation](https://docs.formance.com/security)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formance Webhooks API
-
-Manage webhook subscriptions that deliver platform events (ledger, payments, wallets, and orchestration) to your endpoints. Insert and list configs, activate or deactivate them, rotate signing secrets, and send test events.
-
-- **Human URL:** [https://docs.formance.com/webhooks](https://docs.formance.com/webhooks)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/webhooks`
-
-#### Tags
-
-- Webhooks
-- Events
-- Subscriptions
-
-#### Properties
-
-- [Documentation](https://docs.formance.com/webhooks)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Formance Search API
-
-Full-platform Search service that indexes ledger transactions and accounts, payments, and other resources so they can be queried across modules from a single endpoint, with a target/terms query model.
-
-- **Human URL:** [https://docs.formance.com/search](https://docs.formance.com/search)
-- **Base URL:** `https://{organization}.{environment}.formance.cloud/api/search`
-
-#### Tags
-
-- Search
-- Indexing
-- Query
-
-#### Properties
-
-- [Documentation](https://docs.formance.com/search)
-- [API Reference](https://docs.formance.com/api)
-- [OpenAPI](openapi/formance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/formance.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/formance.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/formancehq)
-- [LinkedIn](https://www.linkedin.com/company/formance)
 - [Website](https://www.formance.com)
 - [Documentation](https://docs.formance.com)
-- [Plans](plans/formance-plans-pricing.yml)
-- [Rate Limits](rate-limits/formance-rate-limits.yml)
-- [Fin Ops](finops/formance-finops.yml)
+- [Blog](https://www.formance.com/blog/rss.xml)
+- [GitHub](https://github.com/formancehq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 25.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 25.0** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/formance/](https://apis.io/providers/formance/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Formance: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/formance/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
